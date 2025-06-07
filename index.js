@@ -13,8 +13,10 @@ app.use(express.json());
 ConnectMongoDB(process.env.MONGODB_URL)
 
 const authRoutes = require('./routes/authRoutes');
+const bookRoutes = require('./routes/bookRoutes');
 
 app.use('/api/auth',authRoutes)
+app.use('/api',bookRoutes)
 
 app.get("/",(req,res)=>{
     res.send("From Home Page")
