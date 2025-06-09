@@ -15,10 +15,12 @@ ConnectMongoDB(process.env.MONGODB_URL)
 const authRoutes = require('./routes/authRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 const reviewRoutes = require('./routes/reviewRoutes')
+const searchRoutes = require('./routes/searchRoutes')
 
 app.use('/api/auth',authRoutes)
 app.use('/api',bookRoutes)
 app.use('/api',reviewRoutes)
+app.use('/api',searchRoutes)
 
 app.get("/",(req,res)=>{
     res.send("From Home Page")
