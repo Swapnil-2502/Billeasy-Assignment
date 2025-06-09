@@ -1,4 +1,5 @@
 const Books = require("../models/Books");
+const Review = require("../models/Review");
 
 exports.createBook = async(req,res) => {
     try{
@@ -43,8 +44,19 @@ exports.getBookbyId = async(req,res) => {
 
         const book = await Books.findById(req.params.id).lean()
         if(!book) res.status(404).json({message: "No book found related to this id"})
+
+        const reviews = await Review.find({book: book._id})
+
+        const avgRating = 
+            reviews.length > 0
+                ? reviews.reduce((acc, r) => acc + r.rating,0) / reviews.length
+                : null
         
-        res.status(200).json(book)
+        res.status(200).json({
+            ...book,
+            Average_Rating : avgRating,
+            reviews
+        })
     }
     catch(error){
         res.status(500).json({ error: 'Failed to get book' });
