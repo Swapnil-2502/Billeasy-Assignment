@@ -4,6 +4,8 @@ A RESTful API built with **Node.js**, **Express**, and **MongoDB** that allows u
 
 ---
 
+![alt text](<Screenshot 2025-06-09 at 3.04.08 PM.png>)
+
 ## 🚀 Features
 
 - ✅ User Signup & Login (JWT-based)
